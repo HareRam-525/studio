@@ -1,3 +1,106 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-1",
+      "description": "Elegant convention hall setup for a wedding.",
+      "imageUrl": "https://images.unsplash.com/photo-1601482441062-b9f13131f33a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3ZWRkaW5nJTIwaGFsbHxlbnwwfHx8fDE3NTkzMjgzNjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding hall"
+    },
+    {
+      "id": "hero-2",
+      "description": "Corporate event in a modern conference room.",
+      "imageUrl": "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjb25mZXJlbmNlJTIwcm9vbXxlbnwwfHx8fDE3NTkzNDI0MTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "conference room"
+    },
+    {
+      "id": "hero-3",
+      "description": "Close-up of elegant table setting for a gala dinner.",
+      "imageUrl": "https://images.unsplash.com/photo-1583254211338-57f4b21ed0f5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx0YWJsZSUyMHNldHRpbmd8ZW58MHx8fHwxNzU5Mzg1MDg0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "table setting"
+    },
+    {
+      "id": "about-home",
+      "description": "Interior shot of the convention hall's grand lobby.",
+      "imageUrl": "https://images.unsplash.com/photo-1667206761103-3c321c234eed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxsb2JieSUyMGludGVyaW9yfGVufDB8fHx8MTc1OTM5MDIxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "lobby interior"
+    },
+    {
+      "id": "about-main",
+      "description": "Architectural exterior of B.K.R Convention Hall.",
+      "imageUrl": "https://images.unsplash.com/photo-1737579428849-1f9cdeacac19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8YnVpbGRpbmclMjBleHRlcmlvcnxlbnwwfHx8fDE3NTkzOTAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "building exterior"
+    },
+    {
+      "id": "quote-bg",
+      "description": "Abstract lights creating a bokeh effect.",
+      "imageUrl": "https://images.unsplash.com/photo-1496715976403-7e36dc43f17b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhYnN0cmFjdCUyMGxpZ2h0c3xlbnwwfHx8fDE3NTkzOTAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract lights"
+    },
+    {
+      "id": "room-1",
+      "description": "The grand ballroom set for a large event.",
+      "imageUrl": "https://images.unsplash.com/photo-1736751428992-01c2e6b2d393?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxiYWxscm9vbSUyMGV2ZW50fGVufDB8fHx8MTc1OTM5MDIxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "ballroom event"
+    },
+    {
+      "id": "room-2",
+      "description": "A professional executive suite for meetings.",
+      "imageUrl": "https://images.unsplash.com/photo-1582653291997-079a1c04e5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxtZWV0aW5nJTIwcm9vbXxlbnwwfHx8fDE3NTkzMjAwNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "meeting room"
+    },
+    {
+      "id": "room-3",
+      "description": "A beautiful outdoor garden pavilion.",
+      "imageUrl": "https://images.unsplash.com/photo-1639003331641-8086565901e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxnYXJkZW4lMjBwYXZpbGlvbnxlbnwwfHx8fDE3NTkzOTAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "garden pavilion"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Guests mingling at a social event.",
+      "imageUrl": "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8c29jaWFsJTIwZXZlbnR8ZW58MHx8fHwxNzU5MzkwMjE2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social event"
+    },
+    {
+      "id": "gallery-2",
+      "description": "A beautifully decorated wedding cake.",
+      "imageUrl": "https://images.unsplash.com/photo-1535254973040-607b474cb50d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3ZWRkaW5nJTIwY2FrZXxlbnwwfHx8fDE3NTkzMTA4MTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding cake"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Stage setup for a conference.",
+      "imageUrl": "https://picsum.photos/seed/gallery3/400/400",
+      "imageHint": "conference stage"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Happy couple during their wedding ceremony.",
+      "imageUrl": "https://images.unsplash.com/photo-1596457221755-b96bc3a6df18?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx3ZWRkaW5nJTIwY291cGxlfGVufDB8fHx8MTc1OTM1NzQ2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wedding couple"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Catering food display.",
+      "imageUrl": "https://images.unsplash.com/photo-1622752989445-d6644e17fba3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2F0ZXJpbmclMjBmb29kfGVufDB8fHx8MTc1OTM1Njg3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "catering food"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Floral decorations at an event.",
+      "imageUrl": "https://images.unsplash.com/photo-1629837616094-8053cb268148?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmbG9yYWwlMjBkZWNvcmF0aW9uc3xlbnwwfHx8fDE3NTkzOTAyMTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "floral decorations"
+    },
+    {
+      "id": "gallery-7",
+      "description": "A speaker presenting on stage.",
+      "imageUrl": "https://images.unsplash.com/photo-1592829238140-d5b194da621f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwdWJsaWMlMjBzcGVha2VyfGVufDB8fHx8MTc1OTM5MDIxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "public speaker"
+    },
+    {
+      "id": "gallery-8",
+      "description": "Evening view of the convention hall exterior.",
+      "imageUrl": "https://images.unsplash.com/photo-1462774603919-1d8087e62cad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidWlsZGluZyUyMGV4dGVyaW9yfGVufDB8fHx8MTc1OTM5MDIxNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "building exterior"
+    }
+  ]
 }
