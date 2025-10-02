@@ -31,14 +31,29 @@ export async function submitEnquiry(data: z.infer<typeof formSchema>) {
     };
   }
 
-  // Here you would integrate with an email service like Resend, SendGrid, etc.
-  console.log("New Enquiry Received:", result.data);
+  try {
+    const { fullName, email, phone, subject, message } = result.data;
+    await resend.emails.send({
+      from: 'onboarding@resend.dev', // This must be a verified domain in Resend
+      to: 'saikrishnacharan108@gmail.com', // Replace with your email address
+      subject: `New Enquiry from ${fullName}: ${subject}`,
+      html: `<p>You have a new enquiry from:</p>
+             <p><strong>Name:</strong> ${fullName}</p>
+             <p><strong>Email:</strong> ${email}</p>
+             <p><strong>Phone:</strong> ${phone}</p>
+             <p><strong>Message:</strong></p>
+             <p>${message}</p>`,
+    });
 
-  // Simulate network delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  return {
-    success: true,
-    message: "Form successfully submitted. We will get back to you soon.",
-  };
+    return {
+      success: true,
+      message: "Form successfully submitted. We will get back to you soon.",
+    };
+  } catch (error) {
+    console.error("Error sending email:", error);
+    return {
+      success: false,
+      message: "Something went wrong. Please try again.",
+    };
+  }
 }
