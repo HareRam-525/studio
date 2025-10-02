@@ -34,7 +34,7 @@ export async function submitEnquiry(data: z.infer<typeof formSchema>) {
   try {
     const { fullName, email, phone, subject, message } = result.data;
     await resend.emails.send({
-      from: 'enquiry@bkrconventions.com', // This must be a verified domain in Resend
+      from: 'news.bkrconv.com', // This must be a verified domain in Resend
       to: 'saikrishnacharan108@gmail.com', // Replace with your email address
       subject: `New Enquiry from ${fullName}: ${subject}`,
       html: `<p>You have a new enquiry from:</p>
