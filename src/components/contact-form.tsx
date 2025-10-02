@@ -54,11 +54,15 @@ export default function ContactForm() {
     setIsSubmitting(true);
     
     try {
-      await fetch("/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode({ "form-name": "contact", ...values }),
       });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
       toast({
         title: "Success!",
@@ -67,6 +71,7 @@ export default function ContactForm() {
       });
       form.reset();
     } catch (error) {
+      console.error("Form submission error:", error);
       toast({
         title: "Error",
         description: "An unexpected error occurred. Please try again.",
@@ -89,11 +94,17 @@ export default function ContactForm() {
           <form
             name="contact"
             data-netlify="true"
+            data-netlify-honeypot="bot-field" // Optional: helps prevent spam
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6"
           >
             {/* This hidden input is required for Netlify to identify the form */}
             <input type="hidden" name="form-name" value="contact" />
+            <p className="hidden">
+              <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
+            </p>
 
             <FormField
               control={form.control}
