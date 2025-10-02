@@ -30,6 +30,16 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
+        {/* ---- START: ADD THIS HIDDEN FORM FOR NETLIFY ---- */}
+        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+          <input type="text" name="fullName" />
+          <input type="email" name="email" />
+          <input type="text" name="phone" />
+          <input type="text" name="subject" />
+          <textarea name="message"></textarea>
+        </form>
+        {/* ---- END: ADD THIS HIDDEN FORM FOR NETLIFY ---- */}
+        
         <div className="relative flex min-h-dvh flex-col bg-background">
           <Navbar />
           <main className="flex-1">{children}</main>
