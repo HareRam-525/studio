@@ -1,11 +1,9 @@
-
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
-import { submitEnquiry } from "@/app/actions";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -30,6 +28,13 @@ const formSchema = z.object({
   message: z.string().min(10, "Message must be at least 10 characters."),
 });
 
+// Helper function to encode form data for Netlify
+const encode = (data: Record<string, any>) => {
+  return Object.keys(data)
+    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+};
+
 export default function ContactForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,23 +52,20 @@ export default function ContactForm() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
+    
     try {
-      const result = await submitEnquiry(values);
-      if (result.success) {
-        toast({
-          title: "Success!",
-          description: result.message,
-          variant: "default",
-        });
-        form.reset();
-      } else {
-        // This case would be for server-side validation errors not caught by client
-        toast({
-          title: "Error",
-          description: "Something went wrong. Please try again.",
-          variant: "destructive",
-        });
-      }
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({ "form-name": "contact", ...values }),
+      });
+
+      toast({
+        title: "Success!",
+        description: "Form successfully submitted. We will get back to you soon.",
+        variant: "default",
+      });
+      form.reset();
     } catch (error) {
       toast({
         title: "Error",
@@ -84,7 +86,15 @@ export default function ContactForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            name="contact"
+            data-netlify="true"
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6"
+          >
+            {/* This hidden input is required for Netlify to identify the form */}
+            <input type="hidden" name="form-name" value="contact" />
+
             <FormField
               control={form.control}
               name="fullName"
@@ -92,7 +102,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="John Doe" {...field} name="fullName" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -105,7 +115,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="john.doe@example.com" {...field} />
+                    <Input placeholder="john.doe@example.com" {...field} name="email" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -118,7 +128,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="123-456-7890" {...field} />
+                    <Input placeholder="123-456-7890" {...field} name="phone" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -131,7 +141,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Subject</FormLabel>
                   <FormControl>
-                    <Input placeholder="Booking Enquiry" {...field} />
+                    <Input placeholder="Booking Enquiry" {...field} name="subject" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -148,6 +158,7 @@ export default function ContactForm() {
                       placeholder="Tell us more about your event..."
                       className="min-h-[120px]"
                       {...field}
+                      name="message"
                     />
                   </FormControl>
                   <FormMessage />
