@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -16,10 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2 } from "lucide-react";
-import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Loader2 } from "lucide-react";
 
+// 1. Zod schema for validation (no changes here)
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
@@ -27,13 +28,6 @@ const formSchema = z.object({
   subject: z.string().min(3, "Subject must be at least 3 characters."),
   message: z.string().min(10, "Message must be at least 10 characters."),
 });
-
-// Helper function to encode form data for Netlify
-const encode = (data: Record<string, any>) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
 
 export default function ContactForm() {
   const { toast } = useToast();
@@ -50,26 +44,38 @@ export default function ContactForm() {
     },
   });
 
+  // 2. Updated onSubmit function for Web3Forms
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
+
+    const formData = new FormData();
+    // IMPORTANT: Add your access key from your .env.local file
+    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY!);
     
+    // Append the rest of the form values from react-hook-form
+    Object.entries(values).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
     try {
-      const response = await fetch("/", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: encode({ "form-name": "contact", ...values }),
+        body: formData,
       });
 
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Success!",
+          description: "Form submitted successfully. We will get back to you soon.",
+          variant: "default",
+        });
+        form.reset(); // Clear the form fields on success
+      } else {
+        console.error("Submission Error:", result);
+        throw new Error(result.message || "An error occurred submitting the form.");
       }
-
-      toast({
-        title: "Success!",
-        description: "Form successfully submitted. We will get back to you soon.",
-        variant: "default",
-      });
-      form.reset();
     } catch (error) {
       console.error("Form submission error:", error);
       toast({
@@ -91,21 +97,13 @@ export default function ContactForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
+          {/* 3. Cleaned up <form> element */}
           <form
-            name="contact"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field" // Optional: helps prevent spam
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6"
           >
-            {/* This hidden input is required for Netlify to identify the form */}
-            <input type="hidden" name="form-name" value="contact" />
-            <p className="hidden">
-              <label>
-                Don’t fill this out if you’re human: <input name="bot-field" />
-              </label>
-            </p>
-
+            {/* All Netlify-specific attributes and hidden inputs are removed */}
+            
             <FormField
               control={form.control}
               name="fullName"
@@ -113,7 +111,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} name="fullName" />
+                    <Input placeholder="John Doe" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -126,7 +124,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="john.doe@example.com" {...field} name="email" />
+                    <Input placeholder="john.doe@example.com" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -139,7 +137,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="123-456-7890" {...field} name="phone" />
+                    <Input placeholder="123-456-7890" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -152,7 +150,7 @@ export default function ContactForm() {
                 <FormItem>
                   <FormLabel>Subject</FormLabel>
                   <FormControl>
-                    <Input placeholder="Booking Enquiry" {...field} name="subject" />
+                    <Input placeholder="Booking Enquiry" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -169,7 +167,6 @@ export default function ContactForm() {
                       placeholder="Tell us more about your event..."
                       className="min-h-[120px]"
                       {...field}
-                      name="message"
                     />
                   </FormControl>
                   <FormMessage />
