@@ -48,10 +48,10 @@ export function HeroSection() {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
         <div className="container px-4 md:px-6">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
-            B.K.R Convention Hall
+            B.K.R. Convention Hall
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-shadow-md md:text-xl">
-            Where Your Unforgettable Moments Come to Life
+               Celebrating Life’s Precious Moments under the Divine Grace of Bolikonda Ranganatha Swamy
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" variant="default">
