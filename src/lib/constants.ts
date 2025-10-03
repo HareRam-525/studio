@@ -8,4 +8,4 @@ export const NAV_LINKS = [
     { href: '/contact', label: 'Contact' },
 ];
 
-export const WHATSAPP_LINK = "https://wa.me/911234567890";
+export const WHATSAPP_LINK = "https://wa.me/918886125144";
