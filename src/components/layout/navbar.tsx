@@ -11,7 +11,7 @@ export function Navbar() {
         <div className="mr-6 flex items-center">
           <Link href="/" className="mr-6">
             <h1 className="font-headline text-lg font-bold sm:text-xl">
-              B.K.R Convention Hall
+              B.K.R. Convention Hall
             </h1>
           </Link>
         </div>
