@@ -51,7 +51,7 @@ export function HeroSection() {
             B.K.R. Convention Hall
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-shadow-md md:text-xl">
-               Celebrating Life’s Precious Moments under the Divine Grace of Bolikonda Ranganatha Swamy
+        Celebrating Life’s Precious Moments under the Divine Grace of Bolikonda Ranganatha Swamy
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" variant="default">
