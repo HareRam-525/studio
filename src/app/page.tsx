@@ -7,21 +7,10 @@ import MotionDiv from "@/components/motion-div";
 export default function Home() {
   return (
     <>
-      {/* Each div with "scroll-snap-section" is a full-screen snapping point */}
-      
-      <div className="scroll-snap-section">
-        <HeroSection />
-      </div>
-
-      <div className="scroll-snap-section">
-        <AboutSection />
-      </div>
-
-      <div className="scroll-snap-section">
-        <QuoteSection />
-      </div>
-
-      <div id="enquiry" className="scroll-snap-section border-t">
+      <HeroSection />
+      <AboutSection />
+      <QuoteSection />
+      <section id="enquiry" className="border-t">
         <div className="container px-4 md:px-6">
           <MotionDiv>
             <div className="mx-auto max-w-xl space-y-4 text-center">
@@ -38,7 +27,7 @@ export default function Home() {
             <ContactForm />
           </MotionDiv>
         </div>
-      </div>
+      </section>
     </>
   );
 }
